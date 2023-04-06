@@ -89,6 +89,10 @@
         Window_MenuCommand.prototype.initialize.call(this, 0, 0);
     };
 
+    Window_ItemCategory.prototype.standardFontSize = function () {
+        return 15;
+    }
+
     Window_ItemCategory.prototype.windowWidth = function () {
         return Graphics.boxWidth;
     };

@@ -40,19 +40,34 @@
     Window_Status.prototype.drawBlock2 = function(y) {
         this.drawActorCharacter(this._actor, 20, (36 * 1.5));
         this.drawBasicInfo(50, y - 15);
-        this.drawExpInfo(50, y + 65);
+        this.drawExpInfo(50, 99);
     };
 
     Window_Status.prototype.drawBlock3 = function(y) {
         this.drawParameters(280, y);
+        this.drawVertLine(390)
         this.drawEquipments(430, y);
+    };
+
+    Window_Status.prototype.drawVertLine = function(x) {
+        var lineX = x + this.lineHeight() / 2 - 1;
+        this.contents.paintOpacity = 48;
+        this.contents.fillRect(lineX, 0, 3, this.contentsHeight(), this.normalColor());
+        this.contents.paintOpacity = 255;
     };
 
     Window_Status.prototype.drawParameters = function(x, y) {
         var lineHeight = this.lineHeight();
+        var y2 = -15;
         for (var i = 0; i < 6; i++) {
             var paramId = i + 2;
-            var y2 = y + lineHeight/1.5 * i;
+            if (i === 0 ){
+                y2 += lineHeight;
+            }
+            else {
+                y2 += lineHeight - 10;
+            }
+            console.log(y2);
             this.changeTextColor(this.systemColor());
             this.drawText(TextManager.param(paramId), x, y2, 160);
             this.resetTextColor();
@@ -62,10 +77,10 @@
 
     Window_Status.prototype.drawBasicInfo = function(x, y) {
         var lineHeight = this.lineHeight();
-        this.drawActorLevel(this._actor, x, y);
+        this.drawActorLevel(this._actor, x, 21);
         this.drawActorIcons(this._actor, x, y + lineHeight * 1);
-        this.drawActorHp(this._actor, x, y + lineHeight - 10);
-        this.drawActorMp(this._actor, x, y + lineHeight + 18);
+        this.drawActorHp(this._actor, x, 47);
+        this.drawActorMp(this._actor, x, 73);
     };
 
     Window_Status.prototype.drawExpInfo = function(x, y) {
@@ -79,11 +94,11 @@
             value2 = '-------';
         }
         this.changeTextColor(this.systemColor());
-        this.drawText(expTotal, x, y + lineHeight * 0, 185);
-        this.drawText(expNext, x, y + lineHeight - 10, 185);
+        this.drawText(expTotal, x, 99, 185);
+        this.drawText(expNext, x, 125, 185);
         this.resetTextColor();
-        this.drawText(value1, x, y + lineHeight * 0, 185, 'right');
-        this.drawText(value2, x, y + lineHeight - 10, 185, 'right');
+        this.drawText(value1, x, 99, 185, 'right');
+        this.drawText(value2, x, 125, 185, 'right');
     };
 
     Window_Status.prototype.drawActorHp = function (actor, x, y, width) {
