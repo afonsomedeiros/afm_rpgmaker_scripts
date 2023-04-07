@@ -4,7 +4,7 @@
  *
  * @help https://github.com/afonsomedeiros
  *
-* @param indexVariableCardQuantity
+ * @param indexVariableCardQuantity
  * @desc For setting which RPG Maker variable will be used for card quantity.
  * @default 1
  *
