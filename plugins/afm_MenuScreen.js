@@ -196,7 +196,6 @@
         var x = this.textPadding();
         var width = 90;
         this.contents.clear();
-        this.drawText("Saldo:", x, -5, width, "left");
         this.drawCurrencyValue(this.value(), this.currencyUnit(), x, -5, width);
     };
 
